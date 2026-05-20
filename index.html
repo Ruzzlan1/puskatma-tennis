@@ -9,10 +9,19 @@
   body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
     margin: 0;
-    background: linear-gradient(135deg, #0c6fad 0%, #1a9ae0 60%, #45b3f5 100%);
+    background: url('background.jpg') center center / cover no-repeat fixed;
     min-height: 100vh;
     color: #222;
   }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 60, 110, 0.55);
+    z-index: 0;
+    pointer-events: none;
+  }
+  header, nav.tabs, main { position: relative; z-index: 1; }
   header {
     background: rgba(12, 80, 140, 0.72);
     color: #fff;
