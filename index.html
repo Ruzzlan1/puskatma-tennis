@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avrora Qrupu II Stolüstü Tennis Çempionatı — Püşkatma</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #0c6fad 0%, #1a9ae0 60%, #45b3f5 100%);
+    min-height: 100vh;
+    color: #222;
+  }
+  header {
+    background: rgba(12, 80, 140, 0.72);
+    color: #fff;
+    padding: 18px 24px;
+    text-align: center;
+  }
+  header h1 { margin: 0; font-size: 22px; letter-spacing: 0.5px; font-weight: 700; }
+  header p { margin: 6px 0 0; opacity: 0.9; font-size: 13px; }
+
+  nav.tabs {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding: 0 16px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  nav.tabs button {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+  nav.tabs button:hover { background: rgba(255,255,255,0.28); }
+  nav.tabs button.active {
+    background: #fff;
+    color: #1a9ae0;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    padding: 0 16px;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .panel {
+    background: #fff;
+    border-radius: 0 10px 10px 10px;
+    padding: 22px 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  }
+  .panel + .panel { border-radius: 10px; }
+  .panel h2 {
+    margin: 0 0 14px;
+    font-size: 18px;
+    color: #1a9ae0;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 8px;
+  }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  label { font-size: 12px; font-weight: 600; color: #555; }
+  input[type=number], input[type=text], textarea, select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  textarea { width: 100%; min-height: 160px; resize: vertical; }
+  button {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #1a9ae0;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.15s;
+  }
+  button:hover { background: #45b3f5; }
+  button.secondary { background: #6c757d; }
+  button.secondary:hover { background: #868e96; }
+  button.danger { background: #c0392b; }
+  button.danger:hover { background: #e74c3c; }
+  button.primary { background: #e8a020; font-size: 16px; padding: 12px 28px; }
+  button.primary:hover { background: #f0b840; }
+  .participants-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .participants-table th, .participants-table td {
+    padding: 7px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  .participants-table th {
+    background: #f5f5f5;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #555;
+  }
+  .participants-table tr.seeded td { background: #eef1ff; }
+  .badge {
+    display: inline-block;
+    background: #e8a020;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .summary {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .summary div {
+    background: #eef1f9;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .summary strong { color: #1a9ae0; font-size: 16px; }
+  .groups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .group-card {
+    background: #f9fafb;
+    border: 2px solid #1a9ae0;
+    border-radius: 8px;
+    padding: 12px;
+  }
+  .group-card h3 {
+    margin: 0 0 8px;
+    color: #fff;
+    background: #1a9ae0;
+    font-size: 15px;
+    text-align: center;
+    padding: 6px;
+    border-radius: 4px;
+  }
+  .group-card ol {
+    margin: 0;
+    padding-left: 22px;
+    font-size: 14px;
+  }
+  .group-card li { padding: 3px 0; }
+  .group-card li.seeded {
+    background: #eef1ff;
+    font-weight: 600;
+  }
+  .alert {
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  .alert.error { background: #fadbd8; color: #922b21; }
+  .alert.success { background: #d4edda; color: #155724; }
+  .alert.info { background: #d1ecf1; color: #0c5460; }
+  .import-hint {
+    font-size: 12px;
+    color: #777;
+    margin: 4px 0 8px;
+  }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .seed-toggle { cursor: pointer; user-select: none; }
+  .name-edit {
+    border: 1px solid transparent;
+    background: transparent;
+    padding: 3px 6px;
+    border-radius: 4px;
+    width: 100%;
+  }
+  .name-edit:focus {
+    border-color: #1a9ae0;
+    background: #fff;
+    outline: none;
+  }
+  .delete-btn {
+    background: #c0392b;
+    color: #fff;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+    font-size: 14px;
+  }
+  /* Animation styles */
+  .draw-stage {
+    margin-top: 20px;
+    display: none;
+  }
+  .draw-stage.active { display: block; }
+  .ball-display {
+    text-align: center;
+    margin: 20px 0;
+    min-height: 140px;
+  }
+  .ball {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #c8d4ff, #1a9ae0 65%, #0c6fad);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset -8px -8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    padding: 10px;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+  .ball.spinning {
+    animation: spin 0.12s linear infinite;
+    background: radial-gradient(circle at 35% 35%, #fff, #888 70%, #333);
+    font-size: 28px;
+  }
+  @keyframes spin {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+  }
+  .ball.reveal {
+    animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes pop {
+    0% { transform: scale(0.3); opacity: 0; }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .going-to {
+    text-align: center;
+    font-size: 16px;
+    margin: 12px 0;
+    color: #555;
+    min-height: 24px;
+  }
+  .going-to strong {
+    color: #1a9ae0;
+    font-size: 22px;
+  }
+  .live-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .live-group {
+    background: #f9fafb;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    transition: all 0.3s;
+  }
+  .live-group.highlight {
+    border-color: #e8a020;
+    background: #e8edff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(61,82,160,0.4);
+  }
+  .live-group h4 {
+    margin: 0 0 6px;
+    text-align: center;
+    background: #1a9ae0;
+    color: #fff;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  .live-group.highlight h4 { background: #e8a020; }
+  .live-group ol {
+    margin: 0;
+    padding-left: 22px;
+    font-size: 13px;
+    min-height: 100px;
+  }
+  .live-group li {
+    padding: 2px 0;
+    animation: slideIn 0.4s ease-out;
+  }
+  .live-group li.seeded { background: #eef1ff; font-weight: 600; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .draw-controls {
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    header { background: #fff; color: #000; border-bottom: 2px solid #000; }
+    nav.tabs, .no-print { display: none !important; }
+    .tab-content { display: block !important; }
+    .panel { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; border-radius: 8px; }
+    #tab-setup, #tab-import, #tab-list { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Avrora Qrupu II Stolüstü Tennis Çempionatı</h1>
+  <p>Püşkatma Mərasimi Proqramı</p>
+</header>
+
+<nav class="tabs no-print">
+  <button data-tab="draw" class="active">🎲 Püşkatma</button>
+  <button data-tab="results">🏆 Nəticələr</button>
+  <button data-tab="setup">⚙️ Tənzimləmə</button>
+  <button data-tab="import">📥 İdxal</button>
+  <button data-tab="list">👥 İştirakçılar</button>
+</nav>
+
+<main>
+
+  <!-- TAB 1: SETUP -->
+  <div class="tab-content" id="tab-setup">
+    <section class="panel">
+      <h2>Tənzimləmə</h2>
+      <div class="row">
+        <div class="field">
+          <label>Qrup sayı</label>
+          <input type="number" id="groupCount" min="2" max="50" value="10">
+        </div>
+        <div class="field">
+          <label>Hər qrupda nəfər (təxmini)</label>
+          <input type="number" id="perGroup" value="6" readonly>
+        </div>
+        <div class="field">
+          <button class="secondary" onclick="resetAll()">Hər şeyi sıfırla</button>
+        </div>
+      </div>
+      <div class="summary" style="margin-top:18px;">
+        <div>Cəmi iştirakçı: <strong id="setupTotal">0</strong></div>
+        <div>Finalçılar: <strong id="setupSeeded">0</strong></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- TAB 2: IMPORT -->
+  <div class="tab-content" id="tab-import">
+    <section class="panel">
+      <h2>İştirakçıların idxalı</h2>
+      <p class="import-hint">
+        Hər sətirdə bir iştirakçı yazın. <strong>Finalçıları</strong> (eyni qrupa düşməməli olanları)
+        adın sonuna <code>*</code> əlavə edərək qeyd edin.<br>
+        Misal: <code>Əli Vəliyev *</code> &nbsp;|&nbsp; <code>Rəşad Quliyev</code>
+      </p>
+      <textarea id="importBox" placeholder="Əli Vəliyev *&#10;Rəşad Quliyev&#10;Tural Məmmədov *&#10;..."></textarea>
+      <div class="btn-row">
+        <button onclick="importParticipants()">Siyahını idxal et</button>
+        <button class="secondary" onclick="loadDemo()">Nümunə siyahı (60 nəfər)</button>
+      </div>
+      <div id="importMsg"></div>
+    </section>
+  </div>
+
+  <!-- TAB 3: PARTICIPANTS LIST -->
+  <div class="tab-content" id="tab-list">
+    <section class="panel">
+      <h2>İştirakçılar siyahısı</h2>
+      <div class="summary">
+        <div>Cəmi: <strong id="totalCount">0</strong></div>
+        <div>Finalçılar: <strong id="seededCount">0</strong></div>
+        <div>Qruplar: <strong id="groupsInfo">0</strong></div>
+      </div>
+      <div class="btn-row" style="margin-bottom:10px;">
+        <button class="secondary" onclick="addOne()">+ Bir nəfər əlavə et</button>
+      </div>
+      <table class="participants-table">
+        <thead>
+          <tr>
+            <th style="width:50px">№</th>
+            <th>Ad Soyad</th>
+            <th style="width:120px">Finalçı</th>
+            <th style="width:80px"></th>
+          </tr>
+        </thead>
+        <tbody id="participantsBody"></tbody>
+      </table>
+      <div id="emptyList" class="empty-state" style="display:none;">
+        Hələ iştirakçı əlavə edilməyib. <strong>İdxal</strong> bölməsindən siyahı yapışdırın.
+      </div>
+    </section>
+  </div>
+
+  <!-- TAB 4: DRAW -->
+  <div class="tab-content active" id="tab-draw">
+    <section class="panel" style="text-align:center;">
+      <h2>Püşkatma</h2>
+      <div class="summary" style="justify-content:center;">
+        <div>İştirakçı: <strong id="drawTotal">0</strong></div>
+        <div>Qrup sayı: <strong id="drawGroups">0</strong></div>
+        <div>Finalçı: <strong id="drawSeeded">0</strong></div>
+      </div>
+      <p style="color:#666; font-size:13px; margin: 16px 0;">
+        Aşağıdakı düyməni basaraq iştirakçıları təsadüfi şəkildə qruplara paylaşdırın.<br>
+        Finalçılar avtomatik olaraq fərqli qruplara yerləşdiriləcək.
+      </p>
+      <div class="draw-controls">
+        <button class="primary no-print" id="startDrawBtn" onclick="performDraw()">🎲 Püşkatmanı başlat</button>
+        <button class="secondary no-print" id="skipBtn" onclick="skipAnimation()" style="display:none;">⏭ Animasiyanı keç</button>
+        <button class="secondary no-print" id="soundBtn" onclick="toggleSound()">🔊 Səs açıq</button>
+      </div>
+      <div id="drawMsg"></div>
+
+      <div class="draw-stage" id="drawStage">
+        <div class="ball-display">
+          <div class="ball" id="currentBall">?</div>
+        </div>
+        <div class="going-to" id="goingTo">&nbsp;</div>
+        <div class="live-groups" id="liveGroups"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- TAB 5: RESULTS -->
+  <div class="tab-content" id="tab-results">
+    <section class="panel">
+      <h2>Püşkatma Nəticələri</h2>
+      <div id="drawTime" style="font-size:13px; color:#666; margin-bottom:12px;"></div>
+      <div class="btn-row no-print" style="margin-bottom:14px;">
+        <button class="secondary" onclick="window.print()">🖨 Çap et</button>
+      </div>
+      <div class="groups-grid" id="groupsGrid"></div>
+      <div id="noResults" class="empty-state" style="display:none;">
+        Hələ püşkatma aparılmayıb. <strong>Püşkatma</strong> bölməsinə keçin.
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<script>
+const STORAGE_KEY = 'tennis-draw-data-v1';
+
+let state = {
+  groupCount: 10,
+  participants: [],
+  draw: null,
+  drawTime: null
+};
+
+// Tab navigation
+document.querySelectorAll('nav.tabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('nav.tabs button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    localStorage.setItem('tennis-draw-tab', btn.dataset.tab);
+  });
+});
+
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    try {
+      state = JSON.parse(raw);
+      if (!state.participants) state.participants = [];
+      if (!state.groupCount) state.groupCount = 10;
+    } catch(e) {}
+  }
+  document.getElementById('groupCount').value = state.groupCount;
+  const savedSound = localStorage.getItem('tennis-draw-sound');
+  if (savedSound !== null) {
+    soundEnabled = savedSound === '1';
+    const sb = document.getElementById('soundBtn');
+    if (sb) sb.textContent = soundEnabled ? '🔊 Səs açıq' : '🔇 Səs bağlı';
+  }
+  render();
+  if (state.draw) renderResults();
+  const lastTab = localStorage.getItem('tennis-draw-tab');
+  if (lastTab) {
+    const btn = document.querySelector(`nav.tabs button[data-tab="${lastTab}"]`);
+    if (btn) btn.click();
+  }
+}
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function render() {
+  state.groupCount = parseInt(document.getElementById('groupCount').value) || 10;
+  const total = state.participants.length;
+  const seededN = state.participants.filter(p => p.seeded).length;
+  const perGroup = state.groupCount > 0 ? Math.ceil(total / state.groupCount) : 0;
+  document.getElementById('perGroup').value = perGroup;
+  document.getElementById('totalCount').textContent = total;
+  document.getElementById('seededCount').textContent = seededN;
+  document.getElementById('groupsInfo').textContent = state.groupCount;
+  document.getElementById('setupTotal').textContent = total;
+  document.getElementById('setupSeeded').textContent = seededN;
+  document.getElementById('drawTotal').textContent = total;
+  document.getElementById('drawGroups').textContent = state.groupCount;
+  document.getElementById('drawSeeded').textContent = seededN;
+
+  const tbody = document.getElementById('participantsBody');
+  tbody.innerHTML = '';
+  state.participants.forEach((p, i) => {
+    const tr = document.createElement('tr');
+    if (p.seeded) tr.className = 'seeded';
+    tr.innerHTML = `
+      <td>${i + 1}</td>
+      <td><input class="name-edit" value="${escapeHtml(p.name)}" onchange="updateName(${i}, this.value)"></td>
+      <td><label class="seed-toggle"><input type="checkbox" ${p.seeded ? 'checked' : ''} onchange="toggleSeed(${i})"> Finalçı</label></td>
+      <td><button class="delete-btn" onclick="removeParticipant(${i})">Sil</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('emptyList').style.display = total === 0 ? 'block' : 'none';
+  save();
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function updateName(i, val) {
+  state.participants[i].name = val.trim();
+  save();
+}
+
+function toggleSeed(i) {
+  state.participants[i].seeded = !state.participants[i].seeded;
+  render();
+}
+
+function removeParticipant(i) {
+  state.participants.splice(i, 1);
+  render();
+}
+
+function addOne() {
+  state.participants.push({ name: 'Yeni iştirakçı', seeded: false });
+  render();
+}
+
+function importParticipants() {
+  const txt = document.getElementById('importBox').value;
+  const lines = txt.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+  const msg = document.getElementById('importMsg');
+  if (lines.length === 0) {
+    msg.innerHTML = '<div class="alert error">Heç bir ad tapılmadı.</div>';
+    return;
+  }
+  const added = [];
+  lines.forEach(line => {
+    let seeded = false;
+    let name = line;
+    if (line.endsWith('*')) {
+      seeded = true;
+      name = line.slice(0, -1).trim();
+    }
+    if (name) added.push({ name, seeded });
+  });
+  state.participants = state.participants.concat(added);
+  document.getElementById('importBox').value = '';
+  msg.innerHTML = `<div class="alert success">${added.length} iştirakçı əlavə edildi. "İştirakçılar" bölməsində baxa bilərsiniz.</div>`;
+  setTimeout(() => msg.innerHTML = '', 4000);
+  render();
+}
+
+function loadDemo() {
+  const adlar = [
+    "Əli Vəliyev *","Rəşad Quliyev *","Tural Məmmədov *","Elvin Həsənov *",
+    "Cavid Əliyev","Nicat İsmayılov","Ramil Hüseynov","Sənan Abbasov",
+    "Pərviz Qasımov","Ruslan Bağırov","Vüqar Süleymanov","Mətanət Kərimova",
+    "Səbinə Rzayeva","Aysel Mirzəyeva","Günel Babayeva","Leyla Sadıqova",
+    "Fərid Cəfərov","Anar Mehdiyev","Orxan Quliyev","Vüsal Əhmədov",
+    "Kamran Şirinov","Cəlal Salmanov","Mübariz Rzayev","Vahid Nəsibov",
+    "Səbuhi Bayramov","Tofiq Hacıyev","Üzeyir Yusifov","Eldar Tağıyev",
+    "Mahir Cabbarov","Rüfət Eyvazov","Nurlan Cavadov","Şahin Mövsümov",
+    "Cəmil Allahverdiyev","Etibar Şükürov","Kənan Əsgərov","Samir Pənahov",
+    "Vüsal Camalov","Zaur Quluzadə","Emil Şirəliyev","Niyaz Hüseynli",
+    "Hüseyn Manafov","Murad Qədirov","Akif Nəbiyev","Sahib Hacızadə",
+    "Vüsal Tağızadə","Elnur Nağıyev","Bəxtiyar Yaqubov","Pərviz Hüseynzadə",
+    "Cavanşir Rəhimov","Faiq Məhərrəmov","Rauf Sadıqov","Tahir Ələkbərov",
+    "Cəfər Babayev","Niyaməddin Qurbanov","Vasif Camalzadə","Elşən Qarayev",
+    "Yusif Salayev","İlqar Bayramov","Səttar Şıxəlizadə","Səlim Mustafayev"
+  ];
+  document.getElementById('importBox').value = adlar.join('\n');
+}
+
+function resetAll() {
+  if (!confirm('Bütün məlumatlar silinəcək. Davam edilsin?')) return;
+  state = { groupCount: 10, participants: [], draw: null, drawTime: null };
+  document.getElementById('groupCount').value = 10;
+  document.getElementById('tab-results').querySelector('.groups-grid').innerHTML = '';
+  document.getElementById('drawTime').textContent = '';
+  save();
+  render();
+}
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+let drawSkipped = false;
+let drawInProgress = false;
+let soundEnabled = true;
+let audioCtx = null;
+
+function getAudioCtx() {
+  if (!audioCtx) {
+    try {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    } catch(e) { return null; }
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+// Slot-machine style "click" — each tick during spin
+function playTick() {
+  if (!soundEnabled) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+
+  // Plucky bell tick — like a lottery wheel clicking past a peg
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = 'triangle';
+  const f = 600 + Math.random() * 200;
+  osc.frequency.setValueAtTime(f * 2, now);
+  osc.frequency.exponentialRampToValueAtTime(f, now + 0.03);
+  gain.gain.setValueAtTime(0.18, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start(now);
+  osc.stop(now + 0.08);
+
+  // Subtle wood-block thump on the low end
+  const thump = ctx.createOscillator();
+  const tg = ctx.createGain();
+  thump.type = 'sine';
+  thump.frequency.setValueAtTime(180, now);
+  thump.frequency.exponentialRampToValueAtTime(90, now + 0.05);
+  tg.gain.setValueAtTime(0.12, now);
+  tg.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+  thump.connect(tg).connect(ctx.destination);
+  thump.start(now);
+  thump.stop(now + 0.07);
+}
+
+// Drum-roll buildup — rising tension during spin
+function playSpinWhoosh() {
+  if (!soundEnabled) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  const dur = 0.7;
+
+  // Snare-like noise drum roll, rising in intensity
+  const bufferSize = ctx.sampleRate * dur;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) {
+    // amplitude envelope rises
+    const env = i / bufferSize;
+    data[i] = (Math.random() * 2 - 1) * env * 0.5;
+  }
+  const noise = ctx.createBufferSource();
+  noise.buffer = buffer;
+  const bp = ctx.createBiquadFilter();
+  bp.type = 'bandpass';
+  bp.frequency.setValueAtTime(500, now);
+  bp.frequency.exponentialRampToValueAtTime(2000, now + dur);
+  bp.Q.value = 4;
+  const ng = ctx.createGain();
+  ng.gain.value = 0.35;
+  noise.connect(bp).connect(ng).connect(ctx.destination);
+  noise.start(now);
+
+  // Rising sine sweep — suspense whistle
+  const osc = ctx.createOscillator();
+  const og = ctx.createGain();
+  osc.type = 'sawtooth';
+  osc.frequency.setValueAtTime(220, now);
+  osc.frequency.exponentialRampToValueAtTime(880, now + dur);
+  og.gain.setValueAtTime(0.001, now);
+  og.gain.exponentialRampToValueAtTime(0.12, now + dur * 0.8);
+  og.gain.exponentialRampToValueAtTime(0.001, now + dur);
+  osc.connect(og).connect(ctx.destination);
+  osc.start(now);
+  osc.stop(now + dur);
+
+  // Bass heartbeat thumps — adds drama
+  for (let k = 0; k < 4; k++) {
+    const t = now + k * (dur / 4);
+    const b = ctx.createOscillator();
+    const bg = ctx.createGain();
+    b.type = 'sine';
+    b.frequency.setValueAtTime(120, t);
+    b.frequency.exponentialRampToValueAtTime(50, t + 0.12);
+    bg.gain.setValueAtTime(0.3 + k * 0.05, t);
+    bg.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
+    b.connect(bg).connect(ctx.destination);
+    b.start(t);
+    b.stop(t + 0.16);
+  }
+}
+
+// Big bell + sparkle on reveal
+function playReveal() {
+  if (!soundEnabled) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+
+  // Cymbal crash — bright noise burst
+  const bufferSize = ctx.sampleRate * 0.5;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) {
+    data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 1.5);
+  }
+  const crash = ctx.createBufferSource();
+  crash.buffer = buffer;
+  const hp = ctx.createBiquadFilter();
+  hp.type = 'highpass';
+  hp.frequency.value = 4000;
+  const cg = ctx.createGain();
+  cg.gain.setValueAtTime(0.2, now);
+  cg.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+  crash.connect(hp).connect(cg).connect(ctx.destination);
+  crash.start(now);
+
+  // Big bell chord — bright, triumphant
+  const chord = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+  chord.forEach(freq => {
+    // Bell-like FM synthesis using two oscillators
+    const carrier = ctx.createOscillator();
+    const mod = ctx.createOscillator();
+    const modGain = ctx.createGain();
+    const gain = ctx.createGain();
+    carrier.type = 'sine';
+    mod.type = 'sine';
+    carrier.frequency.value = freq;
+    mod.frequency.value = freq * 3;
+    modGain.gain.value = freq * 2;
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.22, now + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+    mod.connect(modGain).connect(carrier.frequency);
+    carrier.connect(gain).connect(ctx.destination);
+    mod.start(now);
+    carrier.start(now);
+    mod.stop(now + 1.3);
+    carrier.stop(now + 1.3);
+  });
+
+  // Quick "ding" on top for sparkle
+  const ding = ctx.createOscillator();
+  const dg = ctx.createGain();
+  ding.type = 'sine';
+  ding.frequency.setValueAtTime(2093, now); // C7
+  dg.gain.setValueAtTime(0.18, now);
+  dg.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+  ding.connect(dg).connect(ctx.destination);
+  ding.start(now);
+  ding.stop(now + 0.65);
+}
+
+// Victory fanfare — applause + brass-like melody
+function playFinish() {
+  if (!soundEnabled) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+
+  // Triumphant brass melody: C - E - G - C - G - C (octave up)
+  const melody = [
+    { f: 392.00, t: 0.00, d: 0.18 },  // G4
+    { f: 523.25, t: 0.18, d: 0.18 },  // C5
+    { f: 659.25, t: 0.36, d: 0.18 },  // E5
+    { f: 783.99, t: 0.54, d: 0.18 },  // G5
+    { f: 1046.50, t: 0.72, d: 0.6 },  // C6 (held)
+  ];
+  melody.forEach(n => {
+    // Brass-ish stacked sawtooth
+    [1, 2, 3].forEach((mult, i) => {
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = i === 0 ? 'sawtooth' : 'triangle';
+      osc.frequency.value = n.f * (i === 2 ? 2 : 1);
+      const start = now + n.t;
+      g.gain.setValueAtTime(0, start);
+      g.gain.linearRampToValueAtTime(0.12 / mult, start + 0.02);
+      g.gain.setValueAtTime(0.12 / mult, start + n.d - 0.05);
+      g.gain.exponentialRampToValueAtTime(0.001, start + n.d);
+      osc.connect(g).connect(ctx.destination);
+      osc.start(start);
+      osc.stop(start + n.d + 0.05);
+    });
+  });
+
+  // Big final chord under the last note (C major triad, low octave)
+  const finalChord = [130.81, 164.81, 196.00, 261.63]; // C3, E3, G3, C4
+  finalChord.forEach(f => {
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.value = f;
+    const start = now + 0.72;
+    g.gain.setValueAtTime(0, start);
+    g.gain.linearRampToValueAtTime(0.1, start + 0.03);
+    g.gain.exponentialRampToValueAtTime(0.001, start + 1.5);
+    osc.connect(g).connect(ctx.destination);
+    osc.start(start);
+    osc.stop(start + 1.55);
+  });
+
+  // Applause — long noise burst with low-pass sweep
+  const applauseDur = 1.6;
+  const applauseBuf = ctx.createBuffer(1, ctx.sampleRate * applauseDur, ctx.sampleRate);
+  const ad = applauseBuf.getChannelData(0);
+  for (let i = 0; i < ad.length; i++) {
+    // Random claps clustered
+    ad[i] = (Math.random() * 2 - 1) * (0.5 + 0.5 * Math.random());
+  }
+  const applause = ctx.createBufferSource();
+  applause.buffer = applauseBuf;
+  const apFilter = ctx.createBiquadFilter();
+  apFilter.type = 'bandpass';
+  apFilter.frequency.value = 2500;
+  apFilter.Q.value = 0.7;
+  const apGain = ctx.createGain();
+  const apStart = now + 0.7;
+  apGain.gain.setValueAtTime(0, apStart);
+  apGain.gain.linearRampToValueAtTime(0.18, apStart + 0.2);
+  apGain.gain.setValueAtTime(0.18, apStart + 1.0);
+  apGain.gain.exponentialRampToValueAtTime(0.001, apStart + applauseDur);
+  applause.connect(apFilter).connect(apGain).connect(ctx.destination);
+  applause.start(apStart);
+
+  // Cymbal crash at the climax
+  const crashDur = 1.2;
+  const crashBuf = ctx.createBuffer(1, ctx.sampleRate * crashDur, ctx.sampleRate);
+  const cd = crashBuf.getChannelData(0);
+  for (let i = 0; i < cd.length; i++) {
+    cd[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / cd.length, 1.2);
+  }
+  const crash = ctx.createBufferSource();
+  crash.buffer = crashBuf;
+  const cHp = ctx.createBiquadFilter();
+  cHp.type = 'highpass';
+  cHp.frequency.value = 5000;
+  const cg = ctx.createGain();
+  cg.gain.setValueAtTime(0.25, now + 0.72);
+  cg.gain.exponentialRampToValueAtTime(0.001, now + 0.72 + crashDur);
+  crash.connect(cHp).connect(cg).connect(ctx.destination);
+  crash.start(now + 0.72);
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  const btn = document.getElementById('soundBtn');
+  if (btn) btn.textContent = soundEnabled ? '🔊 Səs açıq' : '🔇 Səs bağlı';
+  localStorage.setItem('tennis-draw-sound', soundEnabled ? '1' : '0');
+}
+
+function planDraw() {
+  const N = state.participants.length;
+  const G = state.groupCount;
+  const seeded = state.participants.filter(p => p.seeded);
+  const others = state.participants.filter(p => !p.seeded);
+  const groups = Array.from({ length: G }, () => []);
+
+  const seededShuffled = shuffle(seeded);
+  const groupOrder = shuffle(Array.from({ length: G }, (_, i) => i));
+  seededShuffled.forEach((p, i) => {
+    groups[groupOrder[i]].push({ ...p });
+  });
+
+  const baseSize = Math.floor(N / G);
+  const remainder = N % G;
+  const targetSizes = Array.from({ length: G }, (_, i) => baseSize + (i < remainder ? 1 : 0));
+
+  const othersShuffled = shuffle(others);
+  const sizeOrder = shuffle(Array.from({ length: G }, (_, i) => i));
+
+  // Build draw sequence: list of {participant, groupIndex}
+  const sequence = [];
+  seededShuffled.forEach((p, i) => {
+    sequence.push({ participant: p, groupIndex: groupOrder[i] });
+  });
+
+  const tempCounts = groups.map(g => g.length);
+  let idx = 0;
+  for (const gi of sizeOrder) {
+    while (tempCounts[gi] < targetSizes[gi] && idx < othersShuffled.length) {
+      sequence.push({ participant: othersShuffled[idx++], groupIndex: gi });
+      tempCounts[gi]++;
+    }
+  }
+  while (idx < othersShuffled.length) {
+    let minGi = 0;
+    for (let i = 1; i < G; i++) if (tempCounts[i] < tempCounts[minGi]) minGi = i;
+    sequence.push({ participant: othersShuffled[idx++], groupIndex: minGi });
+    tempCounts[minGi]++;
+  }
+
+  // Shuffle the final assignment order so animation isn't predictable
+  const finalGroups = Array.from({ length: G }, () => []);
+  const animSequence = shuffle(sequence);
+  animSequence.forEach(item => {
+    finalGroups[item.groupIndex].push({ ...item.participant });
+  });
+
+  return { sequence: animSequence, finalGroups, G };
+}
+
+function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+function renderLiveGroups(G, groups, highlightIdx) {
+  const letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'];
+  const container = document.getElementById('liveGroups');
+  container.innerHTML = '';
+  for (let i = 0; i < G; i++) {
+    const div = document.createElement('div');
+    div.className = 'live-group' + (i === highlightIdx ? ' highlight' : '');
+    const label = letters[i] || (i + 1);
+    let html = `<h4>Qrup ${label}</h4><ol>`;
+    (groups[i] || []).forEach(p => {
+      html += `<li class="${p.seeded ? 'seeded' : ''}">${escapeHtml(p.name)}${p.seeded ? ' ⭐' : ''}</li>`;
+    });
+    html += '</ol>';
+    div.innerHTML = html;
+    container.appendChild(div);
+  }
+}
+
+function skipAnimation() {
+  drawSkipped = true;
+}
+
+async function performDraw() {
+  if (drawInProgress) return;
+  const msg = document.getElementById('drawMsg');
+  msg.innerHTML = '';
+  const N = state.participants.length;
+  const G = state.groupCount;
+  if (N < G) {
+    msg.innerHTML = '<div class="alert error">İştirakçı sayı qrup sayından az ola bilməz.</div>';
+    return;
+  }
+  if (G < 2) {
+    msg.innerHTML = '<div class="alert error">Ən az 2 qrup olmalıdır.</div>';
+    return;
+  }
+  const seededCount = state.participants.filter(p => p.seeded).length;
+  if (seededCount > G) {
+    msg.innerHTML = `<div class="alert error">Finalçı sayı (${seededCount}) qrup sayından (${G}) çoxdur.</div>`;
+    return;
+  }
+
+  drawInProgress = true;
+  drawSkipped = false;
+  document.getElementById('startDrawBtn').disabled = true;
+  document.getElementById('skipBtn').style.display = 'inline-block';
+  document.getElementById('drawStage').classList.add('active');
+
+  const { sequence, finalGroups } = planDraw();
+  const liveGroups = Array.from({ length: G }, () => []);
+  const ball = document.getElementById('currentBall');
+  const goingTo = document.getElementById('goingTo');
+  const letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'];
+
+  renderLiveGroups(G, liveGroups, -1);
+
+  for (let i = 0; i < sequence.length; i++) {
+    const { participant, groupIndex } = sequence[i];
+
+    if (!drawSkipped) {
+      // Spinning phase
+      ball.classList.add('spinning');
+      ball.classList.remove('reveal');
+      ball.textContent = '?';
+      goingTo.innerHTML = `<span style="opacity:0.6;">Növbəti iştirakçı seçilir...</span>`;
+      playSpinWhoosh();
+      const spinDuration = Math.max(400, 900 - i * 25);
+      const tickInterval = 60;
+      const ticks = Math.floor(spinDuration / tickInterval);
+      for (let t = 0; t < ticks; t++) {
+        if (drawSkipped) break;
+        const rand = state.participants[Math.floor(Math.random() * state.participants.length)];
+        ball.textContent = rand.name.split(' ')[0];
+        playTick();
+        await sleep(tickInterval);
+      }
+      ball.classList.remove('spinning');
+    }
+
+    // Reveal phase
+    if (!drawSkipped) {
+      ball.classList.add('reveal');
+      ball.textContent = participant.name + (participant.seeded ? ' ⭐' : '');
+      const label = letters[groupIndex] || (groupIndex + 1);
+      goingTo.innerHTML = `→ <strong>Qrup ${label}</strong>`;
+      playReveal();
+      await sleep(700);
+    }
+
+    liveGroups[groupIndex].push(participant);
+    renderLiveGroups(G, liveGroups, drawSkipped ? -1 : groupIndex);
+
+    if (!drawSkipped) {
+      await sleep(400);
+    }
+  }
+
+  ball.classList.remove('spinning', 'reveal');
+  ball.textContent = '✓';
+  goingTo.innerHTML = '<strong style="color:#1a9ae0;">Püşkatma tamamlandı!</strong>';
+  playFinish();
+
+  state.draw = finalGroups;
+  state.drawTime = new Date().toISOString();
+  save();
+  renderResults();
+
+  document.getElementById('startDrawBtn').disabled = false;
+  document.getElementById('startDrawBtn').textContent = '🔄 Yenidən püşkat';
+  document.getElementById('skipBtn').style.display = 'none';
+  drawInProgress = false;
+
+  msg.innerHTML = '<div class="alert success">Püşkatma tamamlandı! "Nəticələr" bölməsində baxa bilərsiniz.</div>';
+}
+
+function renderResults() {
+  const grid = document.getElementById('groupsGrid');
+  const noRes = document.getElementById('noResults');
+  if (!state.draw) {
+    grid.innerHTML = '';
+    noRes.style.display = 'block';
+    document.getElementById('drawTime').textContent = '';
+    return;
+  }
+  noRes.style.display = 'none';
+  const t = state.drawTime ? new Date(state.drawTime) : null;
+  document.getElementById('drawTime').textContent = t
+    ? `Püşkatma tarixi: ${t.toLocaleString('az-AZ')}`
+    : '';
+  grid.innerHTML = '';
+  const letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'];
+  state.draw.forEach((group, gi) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    const label = letters[gi] || (gi + 1);
+    let html = `<h3>Qrup ${label}</h3><ol>`;
+    group.forEach(p => {
+      html += `<li class="${p.seeded ? 'seeded' : ''}">${escapeHtml(p.name)}${p.seeded ? ' <span class="badge">F</span>' : ''}</li>`;
+    });
+    html += '</ol>';
+    card.innerHTML = html;
+    grid.appendChild(card);
+  });
+}
+
+document.getElementById('groupCount').addEventListener('input', render);
+
+load();
+</script>
+</body>
+</html>
