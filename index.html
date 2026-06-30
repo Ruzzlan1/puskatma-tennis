@@ -972,7 +972,7 @@ function renderLiveGroups(G, groups, highlightIdx) {
     const label = letters[i] || (i + 1);
     let html = `<h4>Qrup ${label}</h4><ol>`;
     (groups[i] || []).forEach(p => {
-      html += `<li class="${p.seeded ? 'seeded' : ''}">${escapeHtml(p.name)}${p.seeded ? ' ⭐' : ''}</li>`;
+      html += `<li class="${p.seeded ? 'seeded' : ''}">${escapeHtml(p.name)}${p.seeded ? '' : ''}</li>`;
     });
     html += '</ol>';
     div.innerHTML = html;
