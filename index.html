@@ -317,7 +317,7 @@
     padding: 2px 0;
     animation: slideIn 0.4s ease-out;
   }
-  .live-group li.seeded { background: #eef1ff; }
+  /* .live-group li.seeded { } */
   @keyframes slideIn {
     from { opacity: 0; transform: translateX(-10px); }
     to { opacity: 1; transform: translateX(0); }
@@ -1044,7 +1044,7 @@ async function performDraw() {
     // Reveal phase
     if (!drawSkipped) {
       ball.classList.add('reveal');
-      ball.textContent = participant.name + (participant.seeded ? ' ⭐' : '');
+      ball.textContent = participant.name + (participant.seeded ? '' : '');
       const label = letters[groupIndex] || (groupIndex + 1);
       goingTo.innerHTML = `→ <strong>Qrup ${label}</strong>`;
       playReveal();
