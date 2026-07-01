@@ -176,7 +176,7 @@
   .group-card li { padding: 3px 0; }
   .group-card li.seeded {
     background: #eef1ff;
-    font-weight: 600;
+    /* font-weight: 600; */
   }
   .alert {
     padding: 10px 14px;
@@ -1099,7 +1099,7 @@ function renderResults() {
     const label = letters[gi] || (gi + 1);
     let html = `<h3>Qrup ${label}</h3><ol>`;
     group.forEach(p => {
-      html += `<li class="${p.seeded ? 'seeded' : ''}">${escapeHtml(p.name)}${p.seeded ? ' <span class="badge">F</span>' : ''}</li>`;
+      html += `<li class="${p.seeded ? 'seeded' : ''}">${escapeHtml(p.name)}${p.seeded ? '' : ''}</li>`;
     });
     html += '</ol>';
     card.innerHTML = html;
